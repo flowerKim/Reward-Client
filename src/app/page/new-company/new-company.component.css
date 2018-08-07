@@ -1,0 +1,115 @@
+/* 좌측 제목 */
+.content-area {
+  display: flex;
+}
+
+.content-area .sub-item {
+  display: flex;
+  flex-flow: column;
+}
+
+.content-area .sub-item:first-child {
+  border-right: 1px solid #e2e2e2;
+  margin-right: 50px;
+}
+
+.content-area .sub-item:last-child {
+  width: 60%
+}
+
+.content-area .sub-item .item-h {
+  color: dimgray;
+  font-size: large;
+  margin: 11px 30px;
+  width: 150px;
+  height: 30px;
+}
+
+.content-area .sub-item .item {
+  margin: 11px 30px;
+  font-size: large;
+  height: 30px;
+}
+
+.content-area .sub-item input {
+  height: 30px;
+}
+
+.content-area .sub-item .item.textarea {
+  margin: 11px 30px;
+  height: 140px;
+  width: auto;
+}
+
+.content-area .sub-item .item select {
+  height: 30px;
+}
+
+
+/* date */
+.item.day {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+}
+
+.item .item-d {
+  width: 49%;
+  margin: 0px;
+}
+
+.item .item-d:nth-child(2) {
+  width: 10px;
+  margin: 0% 1%;
+}
+
+.item .item-d .form-group, .input-group {
+  width: 100%;
+  margin: 0px;
+}
+
+span.calender-box {
+  margin: 0;
+  padding: 0;
+}
+
+span.calender-box button {
+  height: 30px;
+  margin: 0 0 0 -55px;
+  border-color: lightgray;
+}
+
+span.calender-box img {
+  margin: 0;
+  padding: 0;
+  width: 1.2rem;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+.input-group {
+  height: 30px;
+}
+
+.input-group-append img {
+  width: 1rem;
+  cursor: pointer;
+}
+
+.input-group-append .btn {
+  padding: 2px 5px;
+}
+
+/* 하단 버튼 */
+
+.button-area {
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-area button {
+  margin-left: 5px;
+}

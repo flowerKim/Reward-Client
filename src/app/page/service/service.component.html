@@ -1,0 +1,71 @@
+<h2>| 서비스 리스트</h2>
+<br>
+
+<div class="menu-tab">
+  <div class="item" routerLink="/company" routerLinkActive="active">업체리스트</div>
+  <div class="item on" routerLink="/service" routerLinkActive="active">서비스리스트</div>
+  <div class="item" routerLink="/usage_history" routerLinkActive="active">고객사용내역</div>
+  <div class="item">
+    <select (change)="dropDown($event.target.value)">
+      <option *ngFor='let gubun of searchGubun'>{{ gubun }}</option>
+    </select>
+    <input type="text" class="form-control app-pad" placeholder="검색할 필드를 선택해주세요." [(ngModel)]="filter" />
+  </div>
+</div>
+
+
+<div class="sGrid">
+  <table class="table table-hover table-condensed ">
+    <thead>
+      <tr class="active">
+        <th class="text-center" *ngFor="let fieldName of fieldNames; let i = index;" (click)="toggleSort(dataKey[i])" style="cursor:pointer">
+          {{fieldName}}
+          <span style="color: red">{{getSort(dataKey[i])}}</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of wjmCV.items; let i = index" [routerLink]="['/service_detail', item.code]">
+        <td class="text-center" *ngFor="let name of dataKey">
+          <div [ngSwitch]="name">
+            <div *ngSwitchCase="'code'">{{item[name]}}</div>
+            <div *ngSwitchCase="'regdate'">{{item[name]}}</div>
+            <div *ngSwitchCase="'status'">
+              <div *ngIf="item[name] == 1; else elseBlock">서비스 중</div>
+              <ng-template #elseBlock>중지</ng-template>
+            </div>
+            <div *ngSwitchCase="'usage_history'">
+              <button type="button" class="btn btn-outline-info btn-sm" (click)="searchFeild(item['c_name'])">사용내역</button>
+            </div>
+            <div *ngSwitchDefault>{{item[name]}}</div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 페이징 -->
+<div class="paging-area btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex <= 0" (click)="wjmCV.moveToFirstPage()">
+    << </button>
+      <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex <= 0" (click)="wjmCV.moveToPreviousPage()">
+        < </button>
+          <button type="button" class="btn btn-outline-secondary">{{wjmCV.pageIndex + 1}} / {{wjmCV.pageCount}}</button>
+          <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex >= wjmCV.pageCount - 1" (click)="wjmCV.moveToNextPage()">
+          > </button>
+          <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex >= wjmCV.pageCount - 1" (click)="wjmCV.moveToLastPage()">
+          >> </button>
+</div>
+
+<!-- 하단 설명 텍스트 영역 -->
+<br>
+<div class="alert alert-secondary" role="alert">
+  <h4>
+    <span class="badge badge-success">서비스 정책</span>
+  </h4>
+  <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+  <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+  <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+  A simple secondary alert—check it out!
+</div>

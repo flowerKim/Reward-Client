@@ -1,0 +1,87 @@
+<h2>{{title}}</h2>
+<br>
+<div class="menu-tab">
+  <div class="item on" routerLink="/company" routerLinkActive="active">업체리스트</div>
+  <div class="item" routerLink="/service" routerLinkActive="active">서비스리스트</div>
+  <div class="item" routerLink="/usage_history" routerLinkActive="active">고객사용내역</div>
+  <div class="item">
+    <select (change)="dropDown($event.target.value)">
+      <option *ngFor='let gubun of searchGubun'>{{ gubun }}</option>
+    </select>
+    <input type="text" class="form-control app-pad" placeholder="검색할 필드를 선택해주세요." [(ngModel)]="filter" />
+  </div>
+</div>
+
+<div class="sGrid">
+  <table class="table table-hover table-condensed ">
+    <thead>
+      <tr class="active">
+        <th class="text-center" *ngFor="let fieldName of fieldNames; let i = index;" (click)="toggleSort(dataKey[i])" style="cursor:pointer">
+          {{fieldName}}
+          <span style="color: red">{{getSort(dataKey[i])}}</span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of wjmCV.items; let i = index" [routerLink]="['/company_detail', item.code]">
+        <td class="text-center" *ngFor="let name of dataKey">
+          <div [ngSwitch]="name">
+            <div *ngSwitchCase="'code'">{{itemsLength - i}}</div>
+            <div *ngSwitchCase="'regdate'">{{item[name] | date : "y년 M월 d일"}}</div>
+            <div *ngSwitchCase="'type'">
+              <button type="button" class="btn btn-outline-info btn-sm" (click)="searchFeild(item['c_name'])">서비스확인</button>
+            </div>
+            <div *ngSwitchCase="'status'">
+              <div *ngIf="item[name] == 1; else elseBlock">
+                <button type="button" class="btn btn-outline-info btn-sm" (click)="partnerTermination(item['code'])">제휴해지</button>
+              </div>
+              <ng-template #elseBlock>해지된 업체</ng-template>
+            </div>
+            <div *ngSwitchDefault>{{item[name]}}</div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- 버튼 -->
+<div class="button-area">
+  <button type="button" class="btn btn-info" routerLink="/new_company" routerLinkActive="active">제휴 업체 등록</button>
+</div>
+
+
+<!-- 페이징 -->
+<!-- <div class="col-md-5">
+  <input number-input type="text" class="form-control" placeholder="0 or empty is for no paging." [(ngModel)]="wjmCV.pageSize"/>
+</div> -->
+<!-- <div class="paging-area btn-group">
+  <button type="button" class="btn btn-secondary" [disabled]="wjmCV.pageIndex <= 0" (click)="wjmCV.moveToFirstPage()">
+    <span class="glyphicon glyphicons-rewind"></span>
+  </button>
+  <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex <= 0" (click)="wjmCV.moveToPreviousPage()">
+    <span class="glyphicon glyphicon-step-backward"></span>
+  </button>
+  <button type="button" class="btn btn-outline-secondary" disabled style="width:100px">
+    {{wjmCV.pageIndex + 1}} / {{wjmCV.pageCount}}
+  </button>
+  <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex >= wjmCV.pageCount - 1" (click)="wjmCV.moveToNextPage()">
+    <span class="glyphicon glyphicon-step-forward"></span>
+  </button>
+  <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex >= wjmCV.pageCount - 1" (click)="wjmCV.moveToLastPage()">
+    <span class="glyphicon glyphicon-fast-forward"></span>
+  </button>
+</div> -->
+
+<div class="paging-area btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex <= 0" (click)="wjmCV.moveToFirstPage()">
+    << </button>
+      <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex <= 0" (click)="wjmCV.moveToPreviousPage()">
+        < </button>
+          <button type="button" class="btn btn-outline-secondary">{{wjmCV.pageIndex + 1}} / {{wjmCV.pageCount}}</button>
+          <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex >= wjmCV.pageCount - 1" (click)="wjmCV.moveToNextPage()">
+            > </button>
+          <button type="button" class="btn btn-outline-secondary" [disabled]="wjmCV.pageIndex >= wjmCV.pageCount - 1" (click)="wjmCV.moveToLastPage()">
+            >> </button>
+</div>

@@ -1,0 +1,12 @@
+.input-group {
+    height: 30px;
+}
+
+.input-group-append img {
+    width: 1rem;
+    cursor: pointer;
+}
+
+.input-group-append .btn {
+    padding: 2px 5px;
+}

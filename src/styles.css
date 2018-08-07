@@ -1,0 +1,41 @@
+/* 상단 */
+.header {
+    background-color: #b0e0e6;
+    margin-bottom: 14px;
+    padding: 12px 0px;
+    color: #dcf3f6;
+    display: flex;
+}
+.header .item {
+    flex-direction: row;
+}
+
+.header img {
+    width: 80px;
+}
+
+.header h1 {
+    font-size: 40px;
+    line-height: 1;
+    margin: 8px 0 5px 0;
+    color: #fff;
+    font-weight: 500;
+    text-shadow: 1px 1px 10px #7ab2b7;
+}
+
+.margin30 {
+    margin: 0px 30px;
+}
+
+body {
+    font-family: -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system-font, 'Segoe UI Light', 'Segoe UI', 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #3d586c;
+}
+
+h2 {
+    font-weight: 400;
+}

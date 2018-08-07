@@ -1,0 +1,132 @@
+/* 메뉴탭 */
+.menu-tab {
+  display: flex;
+  cursor: pointer;
+  margin: 30px 0 0 2px;
+}
+
+.menu-tab .item {
+  font-weight: 500;
+  font-size: medium;
+  text-align: center;
+  vertical-align: middle;
+  color: dimgray;
+  background-color: #eee;
+  padding: 10px 5px;
+  border-top: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  min-width: 100px;
+}
+
+.menu-tab .item:hover {
+  background-color: #ccc;
+}
+
+.menu-tab .item:first-child {
+  border-left: 1px solid lightgray;
+}
+
+.menu-tab .item:last-child {
+  width: 100%;
+  background-color: white;
+  border-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.menu-tab .item:last-child:hover {
+  background-color: none;
+  cursor: auto;
+}
+
+.menu-tab .item.on {
+  font-weight: 600;
+  color: white;
+  background-color: steelblue;
+  border: 1px solid steelblue;
+}
+
+/* 우측 검색 영역 */
+.menu-tab .item:last-child {
+  width: 100%;
+  background-color: white;
+  border-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+  display: flex;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.menu-tab .item:last-child input {
+  width: 300px;
+  height: 30px;
+  margin-left: 5px;
+}
+
+.menu-tab .item form {
+  width: 230px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-tab .item select {
+  width: 150px;
+  height: 30px;
+  padding: 0;
+  margin: 0px;
+  border: 1px solid #e2e2e2;
+}
+
+.menu-tab .item form input {
+  height: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-tab .item button {
+  margin-left: 5px;
+  height: 30px;
+}
+
+
+/* 표 영역 */
+.sGrid {
+  margin: 0px 3px;
+  border-style: none;
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+  overflow: auto;
+}
+
+.table {
+  margin-bottom: 0rem;
+}
+
+/* 하단 버튼 */
+.button-area {
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-area button {
+  margin-left: 5px;
+}
+
+/* 페이징 */
+.paging-area {
+  display: flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  margin: 30px 0px;
+}

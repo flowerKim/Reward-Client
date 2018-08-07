@@ -1,0 +1,78 @@
+<h2>| 제휴 업체 등록</h2>
+<br>
+<form #newCompany="ngForm" (ngSubmit)="onClickSubmit(newCompany.value)">
+  <div class="content-area">
+    <div class="sub-item">
+      <div class="item-h">업체명</div>
+      <div class="item-h">사업자번호</div>
+      <div class="item-h">서비스분류</div>
+      <div class="item-h">구매채널</div>
+      <div class="item-h">제휴기간</div>
+      <div class="item-h">대표자명</div>
+      <div class="item-h">연락처</div>
+      <div class="item-h">주소지</div>
+      <div class="item-h">담당자</div>
+      <div class="item-h">담당자직급</div>
+      <div class="item-h">담당자연락처</div>
+      <div class="item-h">비고</div>
+    </div>
+    <div class="sub-item">
+      <input type="text" class="item text" name="c_name" placeholder="업체명" ngModel>
+      <input type="text" class="item text" name="b_num" placeholder="사업자 번호" ngModel>
+
+      <div class="item">
+        <select class="form-control" name="type" (change)="valueChangeEvent('type', $event)" ngMode>
+          <option>Select</option>
+          <option *ngFor='let type of searchType'>{{ type }}</option>
+        </select>
+      </div>
+      <div class="item">
+        <select class="form-control" name="channel" (change)="valueChangeEvent('channel', $event)" ngMode>
+          <option>Select</option>
+          <option *ngFor='let channel of searchChannel'>{{ channel }}</option>
+        </select>
+      </div>
+
+      <div class="item day">
+        <div class="item-d">
+          <div class="input-group">
+            <input class="form-control" placeholder="" name="partner_start" value="" ngbDatepicker #d1="ngbDatepicker" ngModel>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d1.toggle()" type="button">
+                <img src="../../assets/monthly-calendar.svg" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="item-d">~</div>
+        <div class="item-d">
+          <div class="input-group">
+            <input class="form-control" placeholder="" name="partner_end" value="" ngbDatepicker #d2="ngbDatepicker" ngModel>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button">
+                <img src="../../assets/monthly-calendar.svg" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="text" class="item text" name="ceo_name" placeholder="대표자명" ngModel>
+      <input type="text" class="item text" name="company_callnum" placeholder="회사 연락처" ngModel>
+      <input type="text" class="item text" name="address" placeholder="주소지" ngModel>
+      <input type="text" class="item text" name="manager_name" placeholder="담당자명" ngModel>
+      <input type="text" class="item text" name="manager_position" placeholder="담당자 직급" ngModel>
+      <input type="text" class="item text" name="manager_callnum" placeholder="담당자 연락처" ngModel>
+      <!-- <input type="text" class="item text" name="desc" placeholder="비고" ngModel> -->
+      <textarea class="item text textarea form-control" name="_desc" value="" aria-label="With textarea" placeholder="가맹사 분배 %를 입력하세요." (change)="valueChangeEvent('_desc', $event)" ngModel></textarea>
+    </div>
+  </div>
+
+
+  <!-- 버튼 -->
+  <div class="button-area">
+    <button type="submit" class="btn btn-info">등록</button>
+    <button type="button" class="btn btn-light" routerLink="/" routerLinkActive="active">취소</button>
+  </div>
+
+</form>
